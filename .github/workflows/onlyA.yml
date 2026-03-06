@@ -1,0 +1,23 @@
+on:
+  workflow_call:
+    inputs:
+      stage:
+        type: string
+        description: The stage to run the job in.
+      other:
+        type: string
+        description: Another input.
+        default: default value
+jobs:
+  jobA:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4.1.0
+      - run: echo "HI"
+      - run: echo "${{ inputs.other }}"
+      - run: echo "${{ inputs.other }}" > other.txt
+      - uses: actions/upload-artifact@v4.1.0
+        if: success()
+        with:
+          name: ${{ github.job }}
+          path: other.txt
