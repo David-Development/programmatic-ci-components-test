@@ -34,3 +34,4 @@ jobs:
           name: jobA
       - run: echo "${{ inputs.ponyhof }}"
       - run: ls -la
+      - run: cat other.txt
