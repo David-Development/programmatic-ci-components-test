@@ -35,3 +35,21 @@ jobs:
       - run: echo "${{ inputs.ponyhof }}"
       - run: ls -la
       - run: cat other.txt
+  jobC:
+    needs: jobA
+    runs-on: ubuntu-latest
+    container:
+      image: alpine:3.20
+    steps:
+      - uses: actions/checkout@v4.1.0
+      - uses: actions/download-artifact@v4.1.0
+        with:
+          name: jobA
+      - run: ls -la
+      - run: cat other.txt
+      - run: echo "Some output" > output.txt
+      - uses: actions/upload-artifact@v4.1.0
+        if: success()
+        with:
+          name: ${{ github.job }}
+          path: output.txt
