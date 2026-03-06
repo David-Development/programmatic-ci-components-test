@@ -1,0 +1,6 @@
+on:
+  push
+
+jobs:
+  full-test:
+    uses: https://github.com/David-Development/programmatic-ci-components-test/.github/workflows/full.yml@main
