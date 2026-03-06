@@ -3,4 +3,4 @@ on:
 
 jobs:
   full-test:
-    uses: https://github.com/David-Development/programmatic-ci-components-test/.github/workflows/full.yml@main
+    uses: David-Development/programmatic-ci-components-test/.github/workflows/full.yml@main
